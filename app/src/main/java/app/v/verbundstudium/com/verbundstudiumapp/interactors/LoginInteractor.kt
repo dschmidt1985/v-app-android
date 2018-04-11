@@ -5,7 +5,6 @@ import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -22,7 +21,7 @@ class BaseLoginInteractor @Inject constructor(val userRepo: UserRepository) : Lo
         Timber.v("doLogin with $username ")
 
         //TODO do login
-        return Completable.complete().doOnComplete { userRepo.setUserLoggedIn(true) }.delay(2000, TimeUnit.MILLISECONDS)
+        return userRepo.loginUser(username, password)
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
     }

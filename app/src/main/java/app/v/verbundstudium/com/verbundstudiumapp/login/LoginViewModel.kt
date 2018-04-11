@@ -35,7 +35,7 @@ class LoginViewModel(private val loginInteractor: LoginInteractor) : ViewModel()
         Timber.v("doLogin")
         loginDisposable = loginInteractor.doLogin("username", "password").subscribe(
                 { getlLoginViewState().value = LoginViewState.Success() },
-                { t -> getlLoginViewState().value = LoginViewState.Error(ErrorViewObject("Login Error...", t)) })
+                { t -> getlLoginViewState().value = LoginViewState.Error(ErrorViewObject("Login Error... ${t.message}", t)) })
 
     }
 

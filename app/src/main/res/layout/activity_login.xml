@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -9,6 +10,7 @@
               android:paddingLeft="@dimen/activity_horizontal_margin"
               android:paddingRight="@dimen/activity_horizontal_margin"
               android:paddingTop="@dimen/activity_vertical_margin"
+              android:background="@android:color/white"
               tools:context=".login.LoginActivity">
 
     <!-- Login progress -->
@@ -21,6 +23,7 @@
         android:visibility="gone"/>
 
     <ScrollView
+
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -30,16 +33,43 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_alignParentStart="true"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/fh_dortmund"/>
+                <ImageView
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="end"
+                    app:srcCompat="@drawable/th_koeln"/>
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:layout_height="wrap_content"
+                android:text="@string/login_headline"/>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
+                android:layout_marginTop="16dp"
                 android:layout_height="wrap_content">
+
 
                 <AutoCompleteTextView
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
+                    android:hint="@string/prompt_email_username"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true"/>
@@ -65,14 +95,52 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
+                android:background="@color/colorPrimary"
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_gravity="end"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:textColor="@android:color/black"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold"/>
 
+
+            <Button
+                android:background="@android:color/transparent"
+                android:id="@+id/forget_password_btn"
+                style="?android:textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:textColor="@color/link"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:text="Passwort vergessen?"
+                android:textSize="@dimen/login_link_text_size"/>
+            <Button
+                android:background="@android:color/transparent"
+                android:id="@+id/forget_username_btn"
+                style="?android:textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:textColor="@color/link"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:paddingTop="0dp"
+                android:textSize="@dimen/login_link_text_size"
+                android:text="Benutzername vergessen?"/>
+            <Button
+                android:background="@android:color/transparent"
+                android:id="@+id/terms_and_conditions"
+                style="?android:textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:textColor="@color/link"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:paddingTop="0dp"
+                android:textSize="@dimen/login_link_text_size"
+                android:text="Nutzungsvereinbarung"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

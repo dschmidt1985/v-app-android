@@ -10,6 +10,7 @@ class LoginViewModel(private val loginInteractor: LoginInteractor): ViewModel() 
 
 
     fun doLogin() {
+
         Timber.v("doLogin")
         loginInteractor.doLogin("username", "password")
 

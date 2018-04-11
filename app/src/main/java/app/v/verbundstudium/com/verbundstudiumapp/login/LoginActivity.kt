@@ -4,6 +4,7 @@ import android.annotation.TargetApi
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Build
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
@@ -38,9 +39,16 @@ class LoginActivity : AppCompatActivity() {
         })
 
         email_sign_in_button.setOnClickListener { viewModel.doLogin() }
+
+        forget_password_btn.setOnClickListener{ toImplement() }
+        forget_username_btn.setOnClickListener{ toImplement() }
+        terms_and_conditions.setOnClickListener{ toImplement() }
     }
 
 
+    private fun toImplement() {
+        Snackbar.make(findViewById(android.R.id.content), "Comming soon!", Snackbar.LENGTH_SHORT).show()
+    }
 
     /**
      * Attempts to sign in or register the account specified by the login form.

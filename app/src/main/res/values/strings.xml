@@ -15,4 +15,19 @@
         completions."
     </string>
     <string name="login_headline">Bei V-App anmelden</string>
+    <string name="btn_settings">Einstellungen</string>
+    <string name="btn_calendar">Kalendar</string>
+    <string name="btn_mensa">Mensa</string>
+    <string name="btn_sprechstunde">Sprechstunden</string>
+    <string name="btn_stundenplan">Stundenpläne</string>
+    <string name="btn_ilias">Ilias</string>
+    <string name="btn_evaluation">Evaluation</string>
+    <string name="btn_campus_nav">Campus Navigation</string>
+    <string name="btn_bib">Bibliothek</string>
+    <string name="btn_pruefungsplan">Prüfungspläne</string>
+    <string name="btn_messages">Nachrichten</string>
+    <string name="btn_psso">PSSO</string>
+    <string name="btn_koeln">TH Köln</string>
+    <string name="btn_dortmund">FH Dortmund</string>
+    <string name="coming_soon_message">Coming soon!</string>
 </resources>

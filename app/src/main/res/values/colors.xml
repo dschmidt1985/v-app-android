@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#FFFF8500</color>
     <color name="colorAccent">#C92524</color>
     <color name="link">#084989</color>
+    <color name="mainMenuTextColor">#FFFF8500</color>
+
 </resources>

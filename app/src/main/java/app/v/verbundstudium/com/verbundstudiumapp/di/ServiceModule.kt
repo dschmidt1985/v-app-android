@@ -7,10 +7,13 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
+
+
 
 @Module
 class ServiceModule {
@@ -24,7 +27,10 @@ class ServiceModule {
     @Provides
     @Singleton
     fun provideHttpClient(accessHandler: AccessHandler): OkHttpClient {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder()
+                .addInterceptor(interceptor)
                 .addInterceptor(OkHttpHeaderInterceptor(accessHandler))
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(60, TimeUnit.SECONDS)

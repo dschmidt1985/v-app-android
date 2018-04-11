@@ -13,6 +13,6 @@ interface UserService {
 
     }
     @Headers("Content-type: application/json")
-    @POST("/v2/oauth2/token")
+    @POST("/v1/ilias/token")
     fun loginUser(@Body loginData:LoginBody):Observable<AccessToken>
 }

@@ -33,7 +33,8 @@ class LoginViewModel(private val loginInteractor: LoginInteractor) : ViewModel()
     fun doLogin() {
         getlLoginViewState().value = LoginViewState.Progress()
         Timber.v("doLogin")
-        loginDisposable = loginInteractor.doLogin("username", "password").subscribe(
+        //TODO use input fields as value
+        loginDisposable = loginInteractor.doLogin("root", "ilias.test").subscribe(
                 { getlLoginViewState().value = LoginViewState.Success() },
                 { t -> getlLoginViewState().value = LoginViewState.Error(ErrorViewObject("Login Error... ${t.message}", t)) })
 

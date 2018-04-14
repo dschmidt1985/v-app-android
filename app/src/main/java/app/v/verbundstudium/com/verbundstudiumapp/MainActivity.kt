@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import app.v.verbundstudium.com.verbundstudiumapp.di.DaggerMainComponent
 import app.v.verbundstudium.com.verbundstudiumapp.login.LoginActivity
+import app.v.verbundstudium.com.verbundstudiumapp.mensa.MensaActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     private fun initButtons() {
         settings_btn.setOnClickListener { notImplementYet() }
         calendar_btn.setOnClickListener { notImplementYet() }
-        mensa_btn.setOnClickListener { notImplementYet() }
+        mensa_btn.setOnClickListener { startActivity(Intent(this, MensaActivity::class.java)) }
         sprechstunden_btn.setOnClickListener { notImplementYet() }
         stundenplan_btn.setOnClickListener { notImplementYet() }
         ilias_btn.setOnClickListener { notImplementYet() }

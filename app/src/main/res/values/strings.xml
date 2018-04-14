@@ -30,4 +30,9 @@
     <string name="btn_koeln">TH Köln</string>
     <string name="btn_dortmund">FH Dortmund</string>
     <string name="coming_soon_message">Coming soon!</string>
+    <string name="title_activity_mensa">Mensa</string>
+    <string name="tab_mensa_gummersbach">Gummersbach</string>
+    <string name="tab_mensa_dortmund">Dortmund</string>
+    <string name="mensa_menu_student_header">Studierende</string>
+    <string name="mensa_menu_guest_header">Gäste</string>
 </resources>

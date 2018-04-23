@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import app.v.verbundstudium.com.verbundstudiumapp.di.DaggerMainComponent
 import app.v.verbundstudium.com.verbundstudiumapp.login.LoginActivity
 import app.v.verbundstudium.com.verbundstudiumapp.mensa.MensaActivity
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity() {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             })
             finish()
+        } else {
+            FirebaseMessaging.getInstance().subscribeToTopic("calendar_events")
         }
     }
 

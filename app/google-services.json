@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "776001209121",
+    "firebase_url": "https://v-app-15b60.firebaseio.com",
+    "project_id": "v-app-15b60",
+    "storage_bucket": "v-app-15b60.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776001209121:android:91c4c2b375bdfdeb",
+        "android_client_info": {
+          "package_name": "app.v.verbundstudium.com.verbundstudiumapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776001209121-ne3eu981ekqro52737v22sl0gl4r9nb7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOstFpDsbdzRfARGDtMJQ3ZvaNO3xog4M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

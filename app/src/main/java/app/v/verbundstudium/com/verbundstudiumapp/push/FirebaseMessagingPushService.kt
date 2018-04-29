@@ -12,30 +12,65 @@ import app.v.verbundstudium.com.verbundstudiumapp.MainActivity
 import app.v.verbundstudium.com.verbundstudiumapp.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import org.joda.time.DateTime
+import org.joda.time.format.DateTimeFormat
 import timber.log.Timber
 
 
-
-
-class FirebaseMessagingPushService: FirebaseMessagingService() {
+class FirebaseMessagingPushService : FirebaseMessagingService() {
+    val dateTimePattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
 
         super.onMessageReceived(remoteMessage)
-        var title = remoteMessage.notification?.title ?: ""
-        var body = remoteMessage.notification?.body ?: ""
+        val title = remoteMessage.notification?.title ?: ""
+        val body = remoteMessage.notification?.body ?: ""
+
+        var start: DateTime? = null
+        var end: DateTime? = null
+        var fullDay = false
+
+        remoteMessage.data["startDate"]?.let { Timber.d("$it")
+            start = DateTime.parse(it, DateTimeFormat.forPattern(dateTimePattern)) }
+        remoteMessage.data["endDate"]?.let { end = DateTime.parse(it, DateTimeFormat.forPattern(dateTimePattern)) }
+        remoteMessage.data["fullDay"]?.let { fullDay = it.toBoolean() }
+
+        val event = EventPushObject(title, body, remoteMessage.data["location"],
+                start, end, fullDay)
 
 
-        showNotifications(title, body, remoteMessage.data)
+
+
+
+        showNotifications(event)
     }
 
     private val CHANNEL_ID = "channelID"
 
-    fun showNotifications(headline: String, message: String, data: Map<String, String>) {
+    fun showNotifications(event: EventPushObject) {
 
-        Timber.d("dschmidt push received title: ${headline}  and body= $message and ${data}" )
+        Timber.d("push received ${event}")
 
-        val msg = message
-        val title = headline + " -> " + data["location"]
+        val title = event.title + " -> " + event.location
+
+        var msg: String
+        if (event.fullDay) {
+            msg = event.start?.toString("dd.MM.yyyy") ?: ""
+            if (msg.isNotEmpty()) {
+                msg += " "
+            }
+            msg += event.body
+        } else {
+            msg = event.start?.toString("HH:mm - dd.MM.yyyy") ?: ""
+            if (msg.isNotEmpty()) {
+                msg += " - "
+            }
+            event.end?.let {
+                msg += it.toString("HH:mm - dd.MM.yyyy")
+                msg += " "
+
+            }
+            msg += event.body
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Create the NotificationChannel
@@ -78,7 +113,7 @@ class FirebaseMessagingPushService: FirebaseMessagingService() {
 
         }
         val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        manager.notify(data["startDate"]?.hashCode() ?: 1, notification)
+        manager.notify(event.start?.hashCode() ?: 1, notification)
     }
 
     override fun onDeletedMessages() {

@@ -2,6 +2,7 @@ package app.v.verbundstudium.com.verbundstudiumapp
 
 import android.app.Application
 import android.util.Log
+import net.danlew.android.joda.JodaTimeAndroid
 import timber.log.Timber
 import timber.log.Timber.DebugTree
 
@@ -10,6 +11,7 @@ class VApp: Application() {
 
     override fun onCreate() {
         super.onCreate()
+        JodaTimeAndroid.init(this)
         if (BuildConfig.DEBUG) {
             Timber.plant(DebugTree())
         } else {

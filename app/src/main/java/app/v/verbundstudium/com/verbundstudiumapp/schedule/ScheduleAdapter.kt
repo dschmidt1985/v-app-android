@@ -12,7 +12,7 @@ class ScheduleAdapter(private var schedule: Schedule) : RecyclerView.Adapter<Sch
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleAdapter.ViewHolder {
         // create a new view
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.dish_list_item, parent, false)
+                .inflate(R.layout.schedule_list_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -35,10 +35,15 @@ class ScheduleAdapter(private var schedule: Schedule) : RecyclerView.Adapter<Sch
     class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(scheduleEvent: ScheduleEvent) {
             with(itemView) {
-                menu_name.text = scheduleEvent.number
-                description.text = scheduleEvent.meetings.toString()
-                students_price_value.text = scheduleEvent.getCity()
-                guest_price_value.text = scheduleEvent.day
+                menu_name.text = "${scheduleEvent.number} - ${scheduleEvent.day} - ${scheduleEvent.getCity()}"
+                if (scheduleEvent.meetings.containsKey("general")) {
+                    description.text = scheduleEvent.meetings["general"]
+                } else {
+                    for (key in scheduleEvent.meetings.keys) {
+                        description.text = "${description.text}$key : ${scheduleEvent.meetings[key]} \n"
+                    }
+                }
+
             }
         }
     }

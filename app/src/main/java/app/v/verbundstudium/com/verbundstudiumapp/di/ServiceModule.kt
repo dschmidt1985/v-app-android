@@ -59,6 +59,12 @@ class ServiceModule {
 
     @Provides
     @Singleton
+    fun provideMensaService(retrofit: Retrofit): MensaService {
+        return retrofit.create(MensaService::class.java)
+    }
+
+    @Provides
+    @Singleton
     internal fun provideGson(): Gson {
         return GsonBuilder()
                 .create()

@@ -8,7 +8,7 @@ import app.v.verbundstudium.com.verbundstudiumapp.R
 import kotlinx.android.synthetic.main.dish_list_item.view.*
 import java.text.NumberFormat
 
-class DishAdapter(private val dishes: List<Dish>) : RecyclerView.Adapter<DishAdapter.ViewHolder>() {
+class DishAdapter(private var dishes: MutableList<Dish>) : RecyclerView.Adapter<DishAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DishAdapter.ViewHolder {
         // create a new view
@@ -25,6 +25,11 @@ class DishAdapter(private val dishes: List<Dish>) : RecyclerView.Adapter<DishAda
         holder.bind(dishes[position])
     }
 
+    fun refreshDishes(dishes: List<Dish>) {
+        this.dishes.clear()
+        this.dishes.addAll(dishes)
+        notifyDataSetChanged()
+    }
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder.
@@ -39,5 +44,6 @@ class DishAdapter(private val dishes: List<Dish>) : RecyclerView.Adapter<DishAda
             }
         }
     }
+
 
 }

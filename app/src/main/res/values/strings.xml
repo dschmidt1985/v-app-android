@@ -37,4 +37,5 @@
     <string name="mensa_menu_guest_header">Gäste</string>
 
     <string name="default_notification_channel_id">push_channel</string>
+    <string name="mensa_is_closed">Mensa ist heute geschlossen!</string>
 </resources>

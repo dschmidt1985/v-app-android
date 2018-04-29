@@ -4,6 +4,8 @@ import app.v.verbundstudium.com.verbundstudiumapp.interactors.BaseLoginInteracto
 import app.v.verbundstudium.com.verbundstudiumapp.interactors.BaseMensaInteractor
 import app.v.verbundstudium.com.verbundstudiumapp.interactors.LoginInteractor
 import app.v.verbundstudium.com.verbundstudiumapp.interactors.MensaInteractor
+import app.v.verbundstudium.com.verbundstudiumapp.schedule.BaseScheduleInteractor
+import app.v.verbundstudium.com.verbundstudiumapp.schedule.ScheduleInteractor
 import dagger.Module
 import dagger.Provides
 
@@ -14,6 +16,9 @@ class InteractorModule {
 
     @Provides
     fun provideMensaInteractor(interactor: BaseMensaInteractor): MensaInteractor = interactor
+
+    @Provides
+    fun provideScheduleInteractor(interactor: BaseScheduleInteractor): ScheduleInteractor = interactor
 
 
 }

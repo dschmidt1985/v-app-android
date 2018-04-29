@@ -65,6 +65,12 @@ class ServiceModule {
 
     @Provides
     @Singleton
+    fun provideCalendarService(retrofit: Retrofit): CalendarService {
+        return retrofit.create(CalendarService::class.java)
+    }
+
+    @Provides
+    @Singleton
     internal fun provideGson(): Gson {
         return GsonBuilder()
                 .create()

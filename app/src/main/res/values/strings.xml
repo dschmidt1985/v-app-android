@@ -38,4 +38,5 @@
 
     <string name="default_notification_channel_id">push_channel</string>
     <string name="mensa_is_closed">Mensa ist heute geschlossen!</string>
+    <string name="title_activity_schedule">Stundenpläne</string>
 </resources>

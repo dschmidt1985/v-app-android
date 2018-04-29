@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import app.v.verbundstudium.com.verbundstudiumapp.di.DaggerMainComponent
 import app.v.verbundstudium.com.verbundstudiumapp.login.LoginActivity
 import app.v.verbundstudium.com.verbundstudiumapp.mensa.MensaActivity
+import app.v.verbundstudium.com.verbundstudiumapp.schedule.ScheduleActivity
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         calendar_btn.setOnClickListener { notImplementYet() }
         mensa_btn.setOnClickListener { startActivity(Intent(this, MensaActivity::class.java)) }
         sprechstunden_btn.setOnClickListener { notImplementYet() }
-        stundenplan_btn.setOnClickListener { notImplementYet() }
+        stundenplan_btn.setOnClickListener { startActivity(Intent(this, ScheduleActivity::class.java)) }
         ilias_btn.setOnClickListener { notImplementYet() }
         evaluation_btn.setOnClickListener { notImplementYet() }
         campus_nav_btn.setOnClickListener { notImplementYet() }

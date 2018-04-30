@@ -1,9 +1,11 @@
 package app.v.verbundstudium.com.verbundstudiumapp.di
 
 import app.v.verbundstudium.com.verbundstudiumapp.MainActivity
+import app.v.verbundstudium.com.verbundstudiumapp.calendar.CalendarActivity
+import app.v.verbundstudium.com.verbundstudiumapp.exams.ExamsActivity
+import app.v.verbundstudium.com.verbundstudiumapp.lessons.LessonsActivity
 import app.v.verbundstudium.com.verbundstudiumapp.login.LoginActivity
 import app.v.verbundstudium.com.verbundstudiumapp.mensa.MensaFragment
-import app.v.verbundstudium.com.verbundstudiumapp.schedule.ScheduleActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -13,7 +15,9 @@ interface MainComponent {
 
     fun inject(activity: LoginActivity)
     fun inject(activity: MainActivity)
-    fun inject(activity: ScheduleActivity)
+    fun inject(activity: LessonsActivity)
+    fun inject(activity: ExamsActivity)
+    fun inject(activity: CalendarActivity)
     fun inject(fragment: MensaFragment)
 
 }

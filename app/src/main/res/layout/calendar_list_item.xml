@@ -23,26 +23,44 @@
         >
 
         <TextView
-            android:id="@+id/menu_name"
-            android:layout_width="match_parent"
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/boarder_background"
+            android:padding="4dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Menu 1"/>
+            tools:text="30.06.2018"/>
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="28dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/date"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_pruefungsplan"
+            android:tint="@color/background_grey"/>
+        <TextView
+            android:id="@+id/city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/boarder_background"
+            android:padding="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Dortmund"/>
+
 
         <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
+            android:padding="4dp"
+            android:background="@drawable/boarder_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/menu_name"
+            app:layout_constraintTop_toBottomOf="@+id/date"
             tools:text="Frisches Putenschnitzel mit Jägersause und Kartoffelpüree dazu eine Beilage nach Wahl"/>
 
     </android.support.constraint.ConstraintLayout>

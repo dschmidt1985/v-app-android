@@ -6,10 +6,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
+import app.v.verbundstudium.com.verbundstudiumapp.calendar.CalendarActivity
 import app.v.verbundstudium.com.verbundstudiumapp.di.DaggerMainComponent
+import app.v.verbundstudium.com.verbundstudiumapp.exams.ExamsActivity
+import app.v.verbundstudium.com.verbundstudiumapp.lessons.LessonsActivity
 import app.v.verbundstudium.com.verbundstudiumapp.login.LoginActivity
 import app.v.verbundstudium.com.verbundstudiumapp.mensa.MensaActivity
-import app.v.verbundstudium.com.verbundstudiumapp.schedule.ScheduleActivity
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -43,15 +45,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun initButtons() {
         settings_btn.setOnClickListener { notImplementYet() }
-        calendar_btn.setOnClickListener { notImplementYet() }
+        calendar_btn.setOnClickListener { startActivity(Intent(this, CalendarActivity::class.java)) }
         mensa_btn.setOnClickListener { startActivity(Intent(this, MensaActivity::class.java)) }
         sprechstunden_btn.setOnClickListener { notImplementYet() }
-        stundenplan_btn.setOnClickListener { startActivity(Intent(this, ScheduleActivity::class.java)) }
-        ilias_btn.setOnClickListener { notImplementYet() }
+        stundenplan_btn.setOnClickListener { startActivity(Intent(this, LessonsActivity::class.java)) }
+        ilias_btn.setOnClickListener { openUrl("http://ec2-18-188-33-124.us-east-2.compute.amazonaws.com/") }
         evaluation_btn.setOnClickListener { notImplementYet() }
         campus_nav_btn.setOnClickListener { notImplementYet() }
-        bib_btn.setOnClickListener { notImplementYet() }
-        pruefungsplan_btn.setOnClickListener { notImplementYet() }
+        bib_btn.setOnClickListener { openUrl("https://www.th-koeln.de/hochschulbibliothek/hochschulbibliothek_3862.php") }
+        pruefungsplan_btn.setOnClickListener {  startActivity(Intent(this, ExamsActivity::class.java))  }
         messages_btn.setOnClickListener { notImplementYet() }
         psso_btn.setOnClickListener { openUrl("http://serviceinfo.campus-it.th-koeln.de/psso/") }
         th_koeln_btn.setOnClickListener { openUrl("https://www.th-koeln.de/") }

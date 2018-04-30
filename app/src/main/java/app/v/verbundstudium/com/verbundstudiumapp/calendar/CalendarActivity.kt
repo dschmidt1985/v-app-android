@@ -1,4 +1,4 @@
-package app.v.verbundstudium.com.verbundstudiumapp.schedule
+package app.v.verbundstudium.com.verbundstudiumapp.calendar
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -12,59 +12,56 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import app.v.verbundstudium.com.verbundstudiumapp.R
 import app.v.verbundstudium.com.verbundstudiumapp.di.DaggerMainComponent
-import kotlinx.android.synthetic.main.activity_schedule.*
+import app.v.verbundstudium.com.verbundstudiumapp.lessons.CalendarAdapter
+import kotlinx.android.synthetic.main.activity_exams.*
 import javax.inject.Inject
 
-class ScheduleActivity: AppCompatActivity() {
+class CalendarActivity: AppCompatActivity() {
 
     @Inject
-    lateinit var viewModelFactory: ScheduleViewModel.ScheduleViewModelFactory
-    private lateinit var viewModel: ScheduleViewModel
+    lateinit var mViewModelFactory: CalendarViewModel.CalendarViewModelFactory
+    private lateinit var mViewModel: CalendarViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_schedule)
+        setContentView(R.layout.activity_calendars)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         DaggerMainComponent.create().inject(this)
 
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(ScheduleViewModel::class.java)
+        mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(CalendarViewModel::class.java)
 
-        viewModel.viewState.observe(this, Observer {scheduleViewState ->
-            when (scheduleViewState) {
-                is ScheduleViewState.Init -> {
+        mViewModel.viewState.observe(this, Observer { calendarViewState ->
+            when (calendarViewState) {
+                is CalendarViewState.Init -> {
                     showProgress(false)
                 }
-                is ScheduleViewState.Progress -> {
+                is CalendarViewState.Progress -> {
                     showProgress(true)
                 }
-                is ScheduleViewState.Error -> {
+                is CalendarViewState.Error -> {
                     showProgress(false)
-                    Snackbar.make(findViewById(android.R.id.content), scheduleViewState.error.message, Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(findViewById(android.R.id.content), calendarViewState.error.message, Snackbar.LENGTH_SHORT).show()
                 }
-                is ScheduleViewState.Success -> {
-                    (schedule_recycler_view.adapter as ScheduleAdapter).refershSchedule(scheduleViewState.schedule)
+                is CalendarViewState.Success -> {
+                    (schedule_recycler_view.adapter as CalendarAdapter).refreshCalendars(calendarViewState.calendars)
                     showProgress(false)
                 }
             }
         })
 
         val viewManager = LinearLayoutManager(this)
-        val viewAdapter = ScheduleAdapter(Schedule("empty", emptyList()))
+        val viewAdapter = CalendarAdapter(emptyList())
 
         schedule_recycler_view.apply {
             layoutManager = viewManager
             adapter = viewAdapter
         }
 
-        viewModel.loadData()
-
-
+        mViewModel.loadData()
     }
-
-
 
     private fun showProgress(show: Boolean) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {

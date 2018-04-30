@@ -34,8 +34,22 @@
         </activity>
 
         <activity
-            android:name=".schedule.ScheduleActivity"
-            android:label="@string/title_activity_schedule"
+            android:name=".exams.ExamsActivity"
+            android:label="@string/title_activity_exams"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".lessons.LessonsActivity"
+            android:label="@string/title_activity_lessons"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".calendar.CalendarActivity"
+            android:label="@string/title_activity_calendar"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

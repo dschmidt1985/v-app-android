@@ -2,6 +2,7 @@ package app.v.verbundstudium.com.verbundstudiumapp.calendar
 
 import com.google.gson.annotations.SerializedName
 import org.joda.time.DateTime
+import org.joda.time.format.DateTimeFormat
 
 data class Calendar(@SerializedName("_id") val id: String,
                     @SerializedName("calendar_id") val calendarId: Int,
@@ -14,17 +15,13 @@ data class Calendar(@SerializedName("_id") val id: String,
                     @SerializedName("event_end") val eventEnd: String,
                     @SerializedName("event_full_day") val fullDay: Boolean) {
 
-    private val dateTimePattern = "yyyyMMddTHHmmssZ"
-
     fun startTime(): DateTime {
-        return DateTime(eventStart.substring(0, 4).toInt(), eventStart.substring(4, 6).toInt(),
-                eventStart.substring(6, 8).toInt(), eventStart.substring(9, 11).toInt(),
-                eventStart.substring(11, 13).toInt(), eventStart.substring(13, 15).toInt())
+        val isoString = "${eventStart.substring(0, 4)}-${eventStart.substring(4, 6)}-${eventStart.substring(6, 8)}T${eventStart.substring(9, 11)}:${eventStart.substring(11, 13)}:${eventStart.substring(13, 15)}.000Z"
+        return DateTime.parse(isoString, DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ"))
     }
 
     fun endTime(): DateTime {
-        return DateTime(eventEnd.substring(0, 4).toInt(), eventEnd.substring(4, 6).toInt(),
-                eventEnd.substring(6, 8).toInt(), eventEnd.substring(9, 11).toInt(),
-                eventEnd.substring(11, 13).toInt(), eventEnd.substring(13, 15).toInt())
+        val isoString = "${eventEnd.substring(0, 4)}-${eventEnd.substring(4, 6)}-${eventEnd.substring(6, 8)}T${eventEnd.substring(9, 11)}:${eventEnd.substring(11, 13)}:${eventEnd.substring(13, 15)}.000Z"
+        return DateTime.parse(isoString, DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ"))
     }
 }

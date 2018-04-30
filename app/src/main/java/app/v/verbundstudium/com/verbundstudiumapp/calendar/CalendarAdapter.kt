@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import app.v.verbundstudium.com.verbundstudiumapp.R
 import app.v.verbundstudium.com.verbundstudiumapp.calendar.Calendar
 import kotlinx.android.synthetic.main.lessons_list_item.view.*
+import org.joda.time.format.DateTimeFormat
 
 class CalendarAdapter(private var calendars: List<Calendar>) : RecyclerView.Adapter<CalendarAdapter.ViewHolder>() {
 
@@ -37,9 +38,14 @@ class CalendarAdapter(private var calendars: List<Calendar>) : RecyclerView.Adap
     class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(calendar: Calendar) {
             with(itemView) {
-                date.text = calendar.startTime().toString()
-                city.text = calendar.eventTitle
-                description.text = calendar.eventDescription
+                if (calendar.fullDay) {
+                    date.text = calendar.startTime().toString(DateTimeFormat.shortDate())
+                } else {
+                    date.text = calendar.startTime().toString(DateTimeFormat.shortDateTime())
+                }
+                city.visibility = if (calendar.eventLocation.isEmpty()) View.GONE else View.VISIBLE
+                city.text = calendar.eventLocation
+                description.text = calendar.eventTitle + " - " + calendar.eventDescription
             }
         }
     }

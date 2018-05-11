@@ -13,7 +13,7 @@ import javax.inject.Inject
 sealed class MensaViewState {
     data class Error(val error: ErrorViewObject) : MensaViewState()
     class Progress : MensaViewState()
-    data class Success(val dishes: List<Dish>) : MensaViewState()
+    data class Success(val dishes: List<Gericht>) : MensaViewState()
     class Init : MensaViewState()
 }
 

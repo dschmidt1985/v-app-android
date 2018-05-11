@@ -63,7 +63,7 @@ class MensaFragment : BaseFragment() {
 
                 }
                 is MensaViewState.Success -> {
-                    (mensa_recycler_view.adapter as DishAdapter).refreshDishes(mensaViewState.dishes)
+                    (mensa_recycler_view.adapter as GerichtAdapter).refreshDishes(mensaViewState.dishes)
                     if (mensaViewState.dishes.isEmpty()) {
                         mensa_recycler_view.visibility = View.GONE
                         mensa_closed_msg.visibility = View.VISIBLE
@@ -118,7 +118,7 @@ class MensaFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewManager = LinearLayoutManager(context)
-        val viewAdapter = DishAdapter(emptyList<Dish>().toMutableList())
+        val viewAdapter = GerichtAdapter(emptyList<Gericht>().toMutableList())
         mensa_recycler_view.apply {
             setHasFixedSize(true)
             // use a linear layout manager

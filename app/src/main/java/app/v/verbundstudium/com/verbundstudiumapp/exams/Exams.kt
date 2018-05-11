@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 
 
-data class Exams(@SerializedName("plan") val plan: String,
+data class Exams(@SerializedName("name") val name: String,
                  @SerializedName("events") val events: List<ExamEvent>)
 
 data class ExamEvent(@SerializedName("number") val number: String,

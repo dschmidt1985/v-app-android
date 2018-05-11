@@ -24,4 +24,5 @@ data class Calendar(@SerializedName("_id") val id: String,
         val isoString = "${eventEnd.substring(0, 4)}-${eventEnd.substring(4, 6)}-${eventEnd.substring(6, 8)}T${eventEnd.substring(9, 11)}:${eventEnd.substring(11, 13)}:${eventEnd.substring(13, 15)}.000Z"
         return DateTime.parse(isoString, DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ"))
     }
+
 }

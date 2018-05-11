@@ -1,6 +1,6 @@
 package app.v.verbundstudium.com.verbundstudiumapp.repository
 
-import app.v.verbundstudium.com.verbundstudiumapp.mensa.Dish
+import app.v.verbundstudium.com.verbundstudiumapp.mensa.Gericht
 import app.v.verbundstudium.com.verbundstudiumapp.mensa.MensaType
 import app.v.verbundstudium.com.verbundstudiumapp.services.MensaService
 import io.reactivex.Observable
@@ -10,13 +10,13 @@ import javax.inject.Singleton
 
 interface MensaRepository {
 
-    fun loadDishes(mensaType: MensaType, dateTime: DateTime): Observable<List<Dish>>
+    fun loadDishes(mensaType: MensaType, dateTime: DateTime): Observable<List<Gericht>>
 }
 
 @Singleton
 class BaseMensaRepository @Inject constructor(private val mensaService: MensaService) : MensaRepository {
 
-    override fun loadDishes(mensaType: MensaType, dateTime: DateTime): Observable<List<Dish>> {
+    override fun loadDishes(mensaType: MensaType, dateTime: DateTime): Observable<List<Gericht>> {
         return mensaService.getDishes(mensaType, dateTime.millis)
     }
 

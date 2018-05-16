@@ -22,7 +22,7 @@ class BaseMensaInteractor @Inject constructor(private val mensaRepo: MensaReposi
         if (dateTime.dayOfWeek == 7) {
             return Observable.just(emptyList())
         } else {
-            return mensaRepo.loadDishes(mensaType, dateTime).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+            return mensaRepo.loadMenu(mensaType, dateTime).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
         }
     }
 

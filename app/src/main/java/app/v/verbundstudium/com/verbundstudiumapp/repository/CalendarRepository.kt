@@ -15,6 +15,7 @@ interface CalendarRepository {
     fun loadCalendarEvents(): Observable<List<Calendar>>
 }
 
+//TODO cache events here
 @Singleton
 class BaseCalendarRepository @Inject constructor(private val calendarService: CalendarService) : CalendarRepository {
 

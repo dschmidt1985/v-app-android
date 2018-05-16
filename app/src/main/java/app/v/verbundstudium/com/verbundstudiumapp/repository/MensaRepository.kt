@@ -10,14 +10,14 @@ import javax.inject.Singleton
 
 interface MensaRepository {
 
-    fun loadDishes(mensaType: MensaType, dateTime: DateTime): Observable<List<Gericht>>
+    fun loadMenu(mensaType: MensaType, dateTime: DateTime): Observable<List<Gericht>>
 }
 
 @Singleton
 class BaseMensaRepository @Inject constructor(private val mensaService: MensaService) : MensaRepository {
 
-    override fun loadDishes(mensaType: MensaType, dateTime: DateTime): Observable<List<Gericht>> {
-        return mensaService.getDishes(mensaType, dateTime.millis)
+    override fun loadMenu(mensaType: MensaType, dateTime: DateTime): Observable<List<Gericht>> {
+        return mensaService.getMenu(mensaType, dateTime.millis)
     }
 
 }

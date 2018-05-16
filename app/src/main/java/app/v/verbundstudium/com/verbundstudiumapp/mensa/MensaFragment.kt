@@ -63,8 +63,8 @@ class MensaFragment : BaseFragment() {
 
                 }
                 is MensaViewState.Success -> {
-                    (mensa_recycler_view.adapter as GerichtAdapter).refreshDishes(mensaViewState.dishes)
-                    if (mensaViewState.dishes.isEmpty()) {
+                    (mensa_recycler_view.adapter as GerichtAdapter).refreshDishes(mensaViewState.gerichte)
+                    if (mensaViewState.gerichte.isEmpty()) {
                         mensa_recycler_view.visibility = View.GONE
                         mensa_closed_msg.visibility = View.VISIBLE
                     } else {

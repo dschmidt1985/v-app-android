@@ -51,13 +51,13 @@ class BaseAccessHandler @Inject constructor(private val tokenStore: TokenStore):
 
 
 data class AccessToken(@SerializedName("access_token") val token: String,
-                       @SerializedName("expires_in") val expireed_in: Int,
+                       @SerializedName("expires_in") val expiresIn: Int,
                        val createdAt: Long) {
 
     fun isStillValid(): Boolean {
         val timeBetween = System.currentTimeMillis() - createdAt
         val timeBetweenInMinutes = timeBetween / 1000 / 60
-        return !(timeBetweenInMinutes > expireed_in + 10)
+        return timeBetweenInMinutes <= expiresIn + 10
     }
 
 }

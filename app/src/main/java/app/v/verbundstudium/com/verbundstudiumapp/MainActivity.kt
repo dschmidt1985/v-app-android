@@ -39,13 +39,17 @@ class MainActivity : AppCompatActivity() {
             })
             finish()
         } else {
-            FirebaseMessaging.getInstance().subscribeToTopic("calendar_events")
+            subscribeToPush()
         }
+    }
+
+    fun subscribeToPush() {
+        FirebaseMessaging.getInstance().subscribeToTopic("calendar_events")
     }
 
     private fun initButtons() {
         settings_btn.setOnClickListener { notImplementYet() }
-        calendar_btn.setOnClickListener { startActivity(Intent(this, CalendarActivity::class.java)) }
+        calendar_btn.setOnClickListener { showCalendar() }
         mensa_btn.setOnClickListener { startActivity(Intent(this, MensaActivity::class.java)) }
         sprechstunden_btn.setOnClickListener { notImplementYet() }
         stundenplan_btn.setOnClickListener { startActivity(Intent(this, LessonsActivity::class.java)) }
@@ -58,6 +62,10 @@ class MainActivity : AppCompatActivity() {
         psso_btn.setOnClickListener { openUrl("http://serviceinfo.campus-it.th-koeln.de/psso/") }
         th_koeln_btn.setOnClickListener { openUrl("https://www.th-koeln.de/") }
         fh_dortmund_btn.setOnClickListener { openUrl("https://www.fh-dortmund.de/de/index.php") }
+    }
+
+    private fun showCalendar() {
+        startActivity(Intent(this, CalendarActivity::class.java))
     }
 
     private fun openUrl(url: String) {

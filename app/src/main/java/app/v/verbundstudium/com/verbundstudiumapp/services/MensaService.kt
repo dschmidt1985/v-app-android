@@ -11,5 +11,5 @@ interface MensaService {
 
     @Headers("Content-type: application/json")
     @GET("/v1/mensa/{city}/{day}")
-    fun getDishes(@Path("city") city: MensaType, @Path("day") date: Long):Observable<List<Gericht>>
+    fun getMenu(@Path("city") city: MensaType, @Path("day") date: Long):Observable<List<Gericht>>
 }

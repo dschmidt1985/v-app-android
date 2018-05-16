@@ -8,7 +8,7 @@ import app.v.verbundstudium.com.verbundstudiumapp.R
 import kotlinx.android.synthetic.main.dish_list_item.view.*
 import java.text.NumberFormat
 
-class GerichtAdapter(private var dishes: MutableList<Gericht>) : RecyclerView.Adapter<GerichtAdapter.ViewHolder>() {
+class GerichtAdapter(private var gerichte: MutableList<Gericht>) : RecyclerView.Adapter<GerichtAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GerichtAdapter.ViewHolder {
         // create a new view
@@ -18,16 +18,16 @@ class GerichtAdapter(private var dishes: MutableList<Gericht>) : RecyclerView.Ad
     }
 
     override fun getItemCount(): Int {
-        return dishes.size
+        return gerichte.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(dishes[position])
+        holder.bind(gerichte[position])
     }
 
     fun refreshDishes(dishes: List<Gericht>) {
-        this.dishes.clear()
-        this.dishes.addAll(dishes)
+        this.gerichte.clear()
+        this.gerichte.addAll(dishes)
         notifyDataSetChanged()
     }
     // Provide a reference to the views for each data item
